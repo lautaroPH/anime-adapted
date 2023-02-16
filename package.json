@@ -12,7 +12,8 @@
 	"dependencies": {
 		"@astrojs/preact": "^2.0.2",
 		"@astrojs/tailwind": "^3.0.1",
-		"astro": "^2.0.10",
+		"@astrojs/vercel": "^3.1.1",
+		"astro": "^2.0.12",
 		"just-debounce-it": "^3.2.0",
 		"preact": "^10.12.1",
 		"tailwindcss": "^3.2.6"
