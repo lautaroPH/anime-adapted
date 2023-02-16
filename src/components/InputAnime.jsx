@@ -12,16 +12,14 @@ const InputAnime = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const title = e.target[0].value;
-    if (!title) return;
+  const handleSearchAnime = (malId) => {
+    if (!malId) return;
 
     setAnimeFound(null);
     setLoading(true);
     setError('');
 
-    searchAnime(title).then(({ anime, error }) => {
+    searchAnime(malId).then(({ anime, error }) => {
       if (error) {
         setError('Anime not found');
         setLoading(false);
@@ -42,43 +40,32 @@ const InputAnime = () => {
       setAnimeTitle('');
       return;
     }
-  }, 700);
+  }, 500);
 
-  const changeAnimeSearch = (title) => {
+  const changeAnimeSearch = (title, malId) => {
     setAnimeTitle(title);
-    handleSubmit({ target: [{ value: title }], preventDefault: () => {} });
+
+    handleSearchAnime(malId);
   };
 
   return (
     <div class="flex flex-col items-center justify-center w-full h-full">
-      <form
-        class="flex flex-col items-center justify-center w-full h-full"
-        onSubmit={handleSubmit}
-      >
-        <label class="text-2xl font-bold text-gray-800">Anime</label>
-        <input
-          type="text"
-          class={`w-1/2 px-4 py-2 mt-2 text-gray-800 border border-gray-300 ${
-            animeTitle ? 'rounded-t-md' : 'rounded-md'
-          } focus:outline-none`}
-          placeholder="Enter anime title"
-          value={animeTitle}
-          onInput={handleChange}
+      <label class="text-2xl font-bold text-gray-800">Anime</label>
+      <input
+        type="text"
+        class={`w-1/2 px-4 py-2 mt-2 text-gray-800 border border-gray-300 ${
+          animeTitle ? 'rounded-t-md' : 'rounded-md'
+        } focus:outline-none`}
+        placeholder="Enter anime title"
+        value={animeTitle}
+        onInput={handleChange}
+      />
+      {!loading && (
+        <SuggestionsAnimes
+          animeTitle={animeTitle}
+          changeAnimeSearch={changeAnimeSearch}
         />
-        {!loading && (
-          <SuggestionsAnimes
-            animeTitle={animeTitle}
-            changeAnimeSearch={changeAnimeSearch}
-          />
-        )}
-
-        <button
-          type="submit"
-          class="px-4 py-2 mt-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50"
-        >
-          Search
-        </button>
-      </form>
+      )}
       {error && (
         <div class="mt-8">
           <ErrorMessage message={error} />
@@ -97,6 +84,11 @@ const InputAnime = () => {
           source={animeFound.source}
           volume={animeFound.volume}
           title={animeFound.title}
+          media_type={animeFound.media_type}
+          start_date={animeFound.start_date}
+          num_episodes={animeFound.num_episodes}
+          status={animeFound.status}
+          mean={animeFound.mean}
         />
       )}
     </div>

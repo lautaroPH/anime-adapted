@@ -4,7 +4,7 @@ export async function get({ params }) {
   const { search } = params;
 
   const res = await fetch(
-    `https://animes5.p.rapidapi.com?fields=id,title,main_picture,media_type,start_date,mean,end_date,status,year&q=${search}&limit=50&order_by=mean`,
+    `https://animes5.p.rapidapi.com?fields=id,title,main_picture,media_type,start_date,mean,end_date,status,year,mal_id&q=${search}&limit=20&order=popularity`,
     options,
   );
 

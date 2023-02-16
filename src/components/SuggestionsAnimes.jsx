@@ -57,6 +57,7 @@ const SuggestionsAnimes = ({ animeTitle, changeAnimeSearch }) => {
               end_date={anime.end_date}
               status={anime.status}
               year={anime.year}
+              mal_id={anime.mal_id}
               animeTitle={animeTitle}
               changeAnimeSearch={changeAnimeSearch}
             />

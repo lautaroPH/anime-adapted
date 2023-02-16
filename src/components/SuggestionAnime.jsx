@@ -11,6 +11,7 @@ const SuggestionAnime = ({
   end_date,
   status,
   year,
+  mal_id,
   animeTitle,
   changeAnimeSearch,
 }) => {
@@ -18,7 +19,7 @@ const SuggestionAnime = ({
 
   return (
     <li
-      onClick={() => changeAnimeSearch(title)}
+      onClick={() => changeAnimeSearch(title, mal_id)}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       class={`flex ${

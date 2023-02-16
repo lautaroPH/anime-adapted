@@ -1,4 +1,4 @@
-import { FirstLetterOfPhraseUpercase } from '../utils/FirstLetterOfPhraseUpercase';
+import { firstLetterOfPhraseUpercase } from '../utils/FirstLetterOfPhraseUpercase';
 import AiredDate from './AiredDate';
 
 const HoverSuggestion = ({
@@ -9,7 +9,7 @@ const HoverSuggestion = ({
   mean,
   status,
 }) => {
-  const statusUppercase = FirstLetterOfPhraseUpercase(
+  const statusUppercase = firstLetterOfPhraseUpercase(
     status.split('_').join(' '),
   );
 

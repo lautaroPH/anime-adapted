@@ -4,7 +4,7 @@ export async function get({ params }) {
   const { search } = params;
 
   const res = await fetch(
-    `https://animes5.p.rapidapi.com/search/${search}?fields=chapter,id,light_novel,main_picture,source,volume,title`,
+    `https://animes5.p.rapidapi.com/anime/${search}?fields=chapter,id,light_novel,main_picture,source,volume,title,media_type,status,num_episodes,mean`,
     options,
   );
 
